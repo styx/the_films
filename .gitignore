@@ -1,0 +1,16 @@
+/.bundle
+/.idea
+/db/*.sqlite3
+*.log
+/tmp
+/doc
+/.yardoc
+/config/*.yml
+/public/assets/*
+/public/images/*
+.ruby-version
+.ruby-gemset
+.rspec
+.DS_Store
+/tags
+.rake_tasks
