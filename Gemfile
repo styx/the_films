@@ -19,6 +19,10 @@ gem 'ng-rails-csrf'
 gem 'rails-assets-ngDialog'
 gem 'rails-assets-ng-table'
 
+group :development do
+  gem 'annotate', require: false
+end
+
 group :development, :test do
   gem 'awesome_print'
   gem 'table_print'
