@@ -1,5 +1,6 @@
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     actionmailer (4.2.0)
       actionpack (= 4.2.0)
@@ -36,7 +37,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    angularjs-rails (1.3.10)
+    angularjs-rails (1.3.36)
     annotate (2.6.5)
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
@@ -132,10 +133,18 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.2.0)
       sprockets-rails
-    rails-assets-angular (1.3.9)
-    rails-assets-ng-table (0.3.3)
-      rails-assets-angular (~> 1)
-    rails-assets-ngDialog (0.3.8)
+    rails-assets-angular (1.3.11)
+    rails-assets-angular-animate (1.3.11)
+      rails-assets-angular (~> 1.3.0)
+    rails-assets-angular-aria (1.3.11)
+      rails-assets-angular (= 1.3.11)
+    rails-assets-angular-material (0.7.0)
+      rails-assets-angular (~> 1.3.0)
+      rails-assets-angular-animate (~> 1.3.0)
+      rails-assets-angular-aria (~> 1.3.0)
+      rails-assets-hammerjs (~> 2.0.2)
+    rails-assets-hammerjs (2.0.4)
+    rails-assets-ng-table (0.4.3)
       rails-assets-angular (~> 1)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
@@ -230,8 +239,9 @@ DEPENDENCIES
   pry-byebug
   quiet_assets
   rails (= 4.2.0)
+  rails-assets-angular-material
+  rails-assets-hammerjs
   rails-assets-ng-table
-  rails-assets-ngDialog
   sass-rails (~> 5.0)
   searchkick
   simple_form

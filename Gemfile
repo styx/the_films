@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
 gem 'rails', '4.2.0'
 gem 'pg'
@@ -15,8 +16,8 @@ gem 'searchkick'
 
 gem 'angularjs-rails'
 gem 'ng-rails-csrf'
-
-gem 'rails-assets-ngDialog'
+gem 'rails-assets-angular-material'
+gem 'rails-assets-hammerjs'
 gem 'rails-assets-ng-table'
 
 group :development do

@@ -1,0 +1,1 @@
+@app = angular.module('Films', ['ngResource', 'ngMaterial', 'ng-rails-csrf'])

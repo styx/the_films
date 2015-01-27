@@ -20,4 +20,6 @@ class Film < ActiveRecord::Base
 
   validates :name, :gapoif, :url, presence: true
   validates :url, uniqueness: true
+
+  searchkick
 end
