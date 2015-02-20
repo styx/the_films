@@ -1,7 +1,10 @@
-div(layout='column' layout-fill layout-align='center center' ng-controller='FilmsController as vm')
+div(layout='column' layout-fill layout-align='center center')
   table.fill-height(flex layout='row')
     thead
       tr
+        th
+        th
+        th
         th
         th
         th
@@ -11,7 +14,7 @@ div(layout='column' layout-fill layout-align='center center' ng-controller='Film
         td
           | {{ film.id }}
         td
-          | {{ film.name }}
+          a ui-sref='films.list.show({id: film.id})' {{ film.name }}
         td
           | {{ film.year }}
         td

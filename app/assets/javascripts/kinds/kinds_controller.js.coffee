@@ -1,24 +1,26 @@
-angular.module('Films.controllers.kinds', [])
+angular.module('Films.controllers.kinds', ['ui.router'])
 .config [
   '$stateProvider'
   ($stateProvider) ->
     $stateProvider
       .state 'kinds',
-        url: ''
-        abstract: true
-        template: '<ui-view/>'
-      .state 'kinds.list',
         url: '/kinds'
-        templateUrl: 'kinds/index.html'
-        controller: 'KindsController as vm'
-]
+        abstract: true
 
-.controller 'KindsController', [
-  'Kind'
-  (Kind) ->
-    vm = this
-    vm.kinds = []
+      .state 'kinds.list',
+        url: ''
+        resolve:
+          kinds: ['Kind', (Kind) ->
+            Kind.query()
+          ]
+        views:
+          '@':
+            templateUrl: 'kinds/index.html'
+            controller: ['kinds', (kinds) ->
+                vm = this
+                vm.kinds = kinds
+                vm
+            ]
+            controllerAs: 'vm'
 
-    Kind.query().then (kinds) ->
-      vm.kinds = kinds
 ]

@@ -1,4 +1,4 @@
-angular.module('Films.controllers.films', [])
+angular.module('Films.controllers.films', ['ui.router'])
 .config [
   '$stateProvider'
   ($stateProvider) ->
@@ -6,19 +6,39 @@ angular.module('Films.controllers.films', [])
       .state 'films',
         url: '/films'
         abstract: true
-        template: '<ui-view/>'
+
+      .state 'films.list.show',
+        url: '/:id'
+        resolve:
+          film: ['$stateParams', 'Film', ($stateParams, Film) ->
+            Film.get($stateParams.id)
+          ]
+        views:
+          '@':
+            templateUrl: 'films/show.html'
+            controller: ['film', (film) ->
+                vm = this
+                vm.film = film
+
+                vm
+            ]
+            controllerAs: 'vm'
+
       .state 'films.list',
         url: ''
-        templateUrl: 'films/index.html'
-        controller: 'FilmsController as vm'
-]
+        resolve:
+          films: ['Film', (Film) ->
+            Film.query()
+          ]
+        views:
+          '@':
+            templateUrl: 'films/index.html'
+            controller: ['films', (films) ->
+                vm = this
+                vm.films = films
 
-.controller 'FilmsController', [
-  'Film'
-  (Film) ->
-    vm = this
-    vm.films = []
+                vm
+            ]
+            controllerAs: 'vm'
 
-    Film.query().then (films) ->
-      vm.films = films
 ]

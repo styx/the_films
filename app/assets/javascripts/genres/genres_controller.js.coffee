@@ -1,4 +1,4 @@
-angular.module('Films.controllers.genres', [])
+angular.module('Films.controllers.genres', ['ui.router'])
 .config [
   '$stateProvider'
   ($stateProvider) ->
@@ -6,23 +6,22 @@ angular.module('Films.controllers.genres', [])
       .state 'genres',
         url: '/genres'
         abstract: true
-        template: '<ui-view/>'
-      .state 'genres.show',
-        url: '/genres/:genreId'
-        templateUrl: 'genres/index.html'
-        controller: 'GenresController as vm'
+
       .state 'genres.list',
-        url: '/'
-        templateUrl: 'genres/index.html'
-        controller: 'GenresController as vm'
-]
+        url: ''
+        resolve:
+          genres: ['Genre', (Genre) ->
+            Genre.query()
+          ]
+        views:
+          '@':
+            templateUrl: 'genres/index.html'
+            controller: ['genres', (genres) ->
+                vm = this
+                vm.genres = genres
 
-.controller 'GenresController', [
-  'Genre'
-  (Genre) ->
-    vm = this
-    vm.genres = []
+                vm
+            ]
+            controllerAs: 'vm'
 
-    Genre.query().then (genres) ->
-      vm.genres = genres
 ]
