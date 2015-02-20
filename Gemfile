@@ -14,9 +14,14 @@ gem 'slim-rails'
 gem 'simple_form'
 gem 'searchkick'
 
+gem 'bourbon'
+
 gem 'angularjs-rails'
+gem 'angular-rails-templates'
+gem 'angularjs-rails-resource'
 gem 'ng-rails-csrf'
 gem 'rails-assets-angular-material'
+gem 'rails-assets-angular-ui-router'
 gem 'rails-assets-hammerjs'
 gem 'rails-assets-ng-table'
 

@@ -9,7 +9,8 @@
 #
 
 class Genre < ActiveRecord::Base
-  has_and_belongs_to_many :films, dependent: :restrict_with_exception
+  has_many :film_genres
+  has_many :films, through: :film_genres, dependent: :restrict_with_exception
 
   validates :name, presence: true
 end

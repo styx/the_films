@@ -7,6 +7,15 @@
 #= require angular-resource
 #= require angular-material
 #= require ng-rails-csrf
+#= require angular-rails-templates
+#= require angularjs/rails/resource
+#= require angular-ui-router
 
+#= require services
+#= require controllers
+#= require_tree ./directives
 #= require app
+
 #= require_tree ./genres
+#= require_tree ./kinds
+#= require_tree ./films

@@ -1,0 +1,17 @@
+div(layout='column' layout-fill layout-align='center center' ng-controller='GenresController as vm')
+  table.fill-height(flex layout='row')
+    thead
+      tr
+        th
+        th
+        th
+
+    tbody
+      tr(ng-repeat='genre in vm.genres')
+        td
+          | {{ genre.id }}
+        td
+          | {{ genre.name }}
+
+  .actions(flex layout='row')
+    md-button.md-primary ng-href="#{new_genre_path}" New Genre

@@ -1,0 +1,25 @@
+div(layout='column' layout-fill layout-align='center center' ng-controller='FilmsController as vm')
+  table.fill-height(flex layout='row')
+    thead
+      tr
+        th
+        th
+        th
+
+    tbody
+      tr(ng-repeat='film in vm.films')
+        td
+          | {{ film.id }}
+        td
+          | {{ film.name }}
+        td
+          | {{ film.year }}
+        td
+          | {{ film.gapoif }}
+        td
+          | {{ film.mins }}
+        td
+          | {{ film.url }}
+
+  .actions(flex layout='row')
+    md-button.md-primary ng-href="#" New Film

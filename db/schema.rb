@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150125185819) do
+ActiveRecord::Schema.define(version: 20150215142748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "film_genres", force: :cascade do |t|
+    t.integer  "film_id"
+    t.integer  "genre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "film_genres", ["film_id", "genre_id"], name: "index_film_genres_on_film_id_and_genre_id", unique: true, using: :btree
+  add_index "film_genres", ["film_id"], name: "index_film_genres_on_film_id", using: :btree
+  add_index "film_genres", ["genre_id", "film_id"], name: "index_film_genres_on_genre_id_and_film_id", unique: true, using: :btree
+  add_index "film_genres", ["genre_id"], name: "index_film_genres_on_genre_id", using: :btree
 
   create_table "films", force: :cascade do |t|
     t.string   "name",        null: false
@@ -34,14 +46,6 @@ ActiveRecord::Schema.define(version: 20150125185819) do
   add_index "films", ["second_name"], name: "index_films_on_second_name", using: :btree
   add_index "films", ["url"], name: "index_films_on_url", unique: true, using: :btree
 
-  create_table "films_genres", id: false, force: :cascade do |t|
-    t.integer "film_id",  null: false
-    t.integer "genre_id", null: false
-  end
-
-  add_index "films_genres", ["film_id", "genre_id"], name: "index_films_genres_on_film_id_and_genre_id", unique: true, using: :btree
-  add_index "films_genres", ["genre_id", "film_id"], name: "index_films_genres_on_genre_id_and_film_id", unique: true, using: :btree
-
   create_table "genres", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -58,7 +62,7 @@ ActiveRecord::Schema.define(version: 20150125185819) do
 
   add_index "kinds", ["name"], name: "index_kinds_on_name", unique: true, using: :btree
 
+  add_foreign_key "film_genres", "films"
+  add_foreign_key "film_genres", "genres"
   add_foreign_key "films", "kinds"
-  add_foreign_key "films_genres", "films"
-  add_foreign_key "films_genres", "genres"
 end

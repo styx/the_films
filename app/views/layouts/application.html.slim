@@ -6,5 +6,16 @@ html(ng-app='Films')
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
-  body
-    = yield
+  body(layout='row' flex ng-controller='ApplicationController as app')
+    md-sidenav.md-sidenav-left.md-whiteframe-z2 layout='column' md-component-id='left' md-is-locked-open='$media("gt-md")'
+      md-toolbar.md-default-theme
+        h1.md-toolbar-tools
+          = link_to root_path, 'ui-sref' => 'films' do
+            | TheFilms
+      st-side-menu(items='app.menu')
+
+    div(layout='column' layout-fill role='main')
+      = render partial: 'layouts/main_toolbar'
+
+      md-content.md-default-theme.md-padding(flex)
+        = yield

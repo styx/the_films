@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  resources :films
   resources :genres
+  resources :kinds
 
-  root 'genres#index'
+  root 'home#index'
 end

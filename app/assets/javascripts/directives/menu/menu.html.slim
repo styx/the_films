@@ -1,0 +1,5 @@
+md-content.md-default-theme.md-padding(flex)
+  ul.docs-menu
+    li.parent-list-item(ng-repeat='menuItem in items' ui-sref-active='active')
+      menu-link(section='section')
+        a(ui-sref='{{menuItem.state}}' class='md-button md-default-theme') {{ menuItem.name }}
