@@ -24,6 +24,7 @@ gem 'rails-assets-angular-material'
 gem 'rails-assets-angular-ui-router'
 gem 'rails-assets-hammerjs'
 gem 'rails-assets-ng-table'
+gem 'rails-assets-ng-clip'
 
 group :development do
   gem 'annotate', require: false
