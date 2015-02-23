@@ -23,5 +23,7 @@ angular.module('Films.controllers.genres', ['ui.router'])
                 vm
             ]
             controllerAs: 'vm'
+        ncyBreadcrumb:
+          label: 'Genres'
 
 ]

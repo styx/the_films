@@ -10,12 +10,14 @@
 #= require angular-rails-templates
 #= require angularjs/rails/resource
 #= require angular-ui-router
+#= require angular-breadcrumb
 
 #= require services
 #= require controllers
 #= require_tree ./directives
 #= require app
 
+#= require_tree ./breadcrumbs
 #= require_tree ./genres
 #= require_tree ./kinds
 #= require_tree ./films

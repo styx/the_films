@@ -1,0 +1,9 @@
+.md-toolbar-item.md-breadcrumb(layout='row')
+  .md-breadcrumb-page(ng-repeat='step in steps' ng-class='{active: $last}' ng-switch='$last || !!step.abstract' layout='row' flex)
+    a(ng-switch-when='false' href='{{ step.ncyBreadcrumbLink }}' flex)
+      | {{ step.ncyBreadcrumbLabel }}
+    .menu-separator-icon
+      .svg-ic_breadcrumb_arrow_15(ng-switch-when='false' flex aria-hidden='true')
+
+    span(ng-switch-when='true' flex)
+      | {{ step.ncyBreadcrumbLabel }}

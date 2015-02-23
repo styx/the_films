@@ -5,6 +5,7 @@ angular.module('Films', [
   'ng-rails-csrf'
   'templates'
   'rails'
+  'ncy-angular-breadcrumb'
   'Films.services'
   'Films.directives'
   'Films.controllers'
@@ -13,7 +14,8 @@ angular.module('Films', [
 .config [
   '$urlRouterProvider'
   '$mdThemingProvider'
-  ($urlRouterProvider, $mdThemingProvider) ->
+  '$breadcrumbProvider'
+  ($urlRouterProvider, $mdThemingProvider, $breadcrumbProvider) ->
 
     $urlRouterProvider.otherwise('/films')
 
@@ -21,6 +23,9 @@ angular.module('Films', [
       .primaryPalette('indigo')
       .accentPalette('light-blue')
       .warnPalette('red')
+
+    $breadcrumbProvider.setOptions
+      templateUrl: 'breadcrumbs/template.html'
 ]
 
 .controller 'ApplicationController', [

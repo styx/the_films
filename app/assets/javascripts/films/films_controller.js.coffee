@@ -23,6 +23,8 @@ angular.module('Films.controllers.films', ['ui.router'])
                 vm
             ]
             controllerAs: 'vm'
+        ncyBreadcrumb:
+          label: '{{vm.film.name}}'
 
       .state 'films.list',
         url: ''
@@ -40,5 +42,7 @@ angular.module('Films.controllers.films', ['ui.router'])
                 vm
             ]
             controllerAs: 'vm'
+        ncyBreadcrumb:
+          label: 'Films'
 
 ]

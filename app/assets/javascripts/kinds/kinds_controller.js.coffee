@@ -22,5 +22,7 @@ angular.module('Films.controllers.kinds', ['ui.router'])
                 vm
             ]
             controllerAs: 'vm'
+        ncyBreadcrumb:
+          label: 'Kinds'
 
 ]
