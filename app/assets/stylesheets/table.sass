@@ -8,7 +8,7 @@ $table-cell-padding: 1rem
 $table-bg: white
 $table-bg-accent: whitesmoke
 $table-bg-hover: rgba(0, 0, 0, 0.12)
-//$table-bg-hover: #d1c4e9
+$table-bg-hover: #b3e5fc
 $table-bg-active: $table-bg-hover
 
 // Tables
@@ -66,6 +66,7 @@ table
 // by vertical table-cell display. Only applies <768px. Everything above that will display normally.
 // For correct display you must add 'data-title' to each 'td'
 .table-responsive-vertical
+  max-width: 960px
   @media screen and (max-width: 768px)
     // Tighten up spacing
     > .table

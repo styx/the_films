@@ -1,16 +1,17 @@
-div(layout='column' layout-fill layout-align='center center')
-  table.fill-height(flex layout='row')
-    thead
-      tr
-        th
-        th
+div.layout-content(layout='column' layout-fill layout-align='center center')
+  .md-whiteframe-z1.table-responsive-vertical(flex layout-fill)
+    table.table.table-hover
+      thead
+        tr
+          th ID
+          th Name
 
-    tbody
-      tr(ng-repeat='genre in vm.kinds')
-        td
-          | {{ genre.id }}
-        td
-          | {{ genre.name }}
+      tbody
+        tr(ng-repeat='kind in vm.kinds')
+          td.md-tile-left(data-title='ID')
+            | {{ kind.id }}
+          td(data-title='Name')
+            | {{ kind.name }}
 
   .actions(flex layout='row')
-    md-button.md-primary ng-href="#{new_genre_path}" New Kind
+    md-button.md-primary ui-sref='#' New Kind
