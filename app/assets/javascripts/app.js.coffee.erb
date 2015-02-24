@@ -15,17 +15,21 @@ angular.module('Films', [
   '$urlRouterProvider'
   '$mdThemingProvider'
   '$breadcrumbProvider'
-  ($urlRouterProvider, $mdThemingProvider, $breadcrumbProvider) ->
+  '$mdIconProvider'
+  ($urlRouterProvider, $mdThemingProvider, $breadcrumbProvider, $mdIconProvider) ->
 
     $urlRouterProvider.otherwise('/films')
 
     $mdThemingProvider.theme('default')
       .primaryPalette('indigo')
-      .accentPalette('light-blue')
+      .accentPalette('red')
       .warnPalette('red')
 
     $breadcrumbProvider.setOptions
       templateUrl: 'breadcrumbs/template.html'
+
+    $mdIconProvider
+      .defaultIconSet("<%= asset_path('svgdefs.svg') %>")
 ]
 
 .controller 'ApplicationController', [
