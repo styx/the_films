@@ -25,6 +25,7 @@ gem 'rails-assets-angular-ui-router'
 gem 'rails-assets-hammerjs'
 gem 'rails-assets-ng-table'
 gem 'rails-assets-angular-breadcrumb'
+gem 'rails-assets-angular-contenteditable'
 
 group :development do
   gem 'annotate', require: false

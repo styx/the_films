@@ -10,8 +10,11 @@ div.layout-content(layout='column' layout-fill layout-align='center center')
         tr(ng-repeat='genre in vm.genres')
           td(data-title='ID')
             | {{ genre.id }}
-          td(data-title='Name')
-            | {{ genre.name }}
+          td(data-title='Name'
+            contenteditable
+            ng-model='genre.name'
+            select-non-editable='true'
+            no-line-breaks='true')
 
   .actions(flex layout='row')
     md-button.md-primary ui-sref='#' New Genre

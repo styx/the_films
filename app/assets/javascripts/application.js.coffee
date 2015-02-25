@@ -11,6 +11,7 @@
 #= require angularjs/rails/resource
 #= require angular-ui-router
 #= require angular-breadcrumb
+#= require angular-contenteditable
 
 #= require services
 #= require controllers
