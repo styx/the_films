@@ -32,7 +32,7 @@ table
       > td
         text-align: left
         padding: $table-cell-padding
-        vertical-align: top
+        vertical-align: middle
         border-top: 0
         +transition(all 0.3s ease)
   > thead > tr > th
@@ -48,6 +48,12 @@ table
         border-top: 0
   > tbody + tbody
     border-top: 1px solid rgba(0, 0, 0, 0.12)
+  // Id column width
+  tr
+    > th:first-child,
+    > td:first-child
+      width: 10%
+
   // Nesting
   .table
     background-color: $table-bg
@@ -65,6 +71,7 @@ table
 // Wrap your tables in `.table-responsive-vertical` and we'll make them mobile friendly
 // by vertical table-cell display. Only applies <768px. Everything above that will display normally.
 // For correct display you must add 'data-title' to each 'td'
+
 .table-responsive-vertical
   max-width: 960px
   @media screen and (max-width: 768px)

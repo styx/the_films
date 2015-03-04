@@ -12,18 +12,13 @@ class GenresController < ApplicationController
     @genre = Genre.new
   end
 
-  def edit
-  end
-
   def create
     @genre = Genre.new(genre_params)
 
     respond_to do |format|
       if @genre.save
-        format.html { redirect_to @genre, notice: 'Genre was successfully created.' }
-        format.json { render :show, status: :created, location: @genre }
+        format.json { render status: :ok }
       else
-        format.html { render :new }
         format.json { render json: @genre.errors, status: :unprocessable_entity }
       end
     end
@@ -44,7 +39,6 @@ class GenresController < ApplicationController
   def destroy
     @genre.destroy
     respond_to do |format|
-      format.html { redirect_to genres_url, notice: 'Genre was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

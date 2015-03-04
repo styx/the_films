@@ -1,0 +1,16 @@
+div.layout-content(layout='column' layout-fill layout-align='center center')
+  .md-whiteframe-z1.table-responsive-vertical(flex layout-fill)
+    md-content.md-padding
+      form(name='form' ng-submit='vm.save()' novalidate)
+        md-input-container
+          label Name
+          input(md-maxlength='30' name='name' ng-model='vm.genre.name' required)
+          div ng-messages="form.name.$error"
+            div ng-message='required' This field is required.
+            div ng-message='md-maxlength'  The name has to be less than 30 characters long.
+
+        .actions(layout='row' layout-align='canter center')
+          md-button.md-primary.md-default-theme(aria-label='Back' flex ng-disabled='form.$invalid')
+            | Save
+          md-button.md-warn.md-default-theme(ui-sref='^' aria-label='Back' flex)
+            | Cancel

@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-source 'https://rails-assets.org'
 
 gem 'rails', '4.2.0'
 gem 'pg'
@@ -20,12 +19,14 @@ gem 'angularjs-rails'
 gem 'angular-rails-templates'
 gem 'angularjs-rails-resource'
 gem 'ng-rails-csrf'
-gem 'rails-assets-angular-material', '>= 0.8.0.rc1'
-gem 'rails-assets-angular-ui-router'
-gem 'rails-assets-hammerjs'
-gem 'rails-assets-ng-table'
-gem 'rails-assets-angular-breadcrumb'
-gem 'rails-assets-angular-contenteditable'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-angular-material', '>= 0.8.2'
+  gem 'rails-assets-angular-ui-router'
+  gem 'rails-assets-hammerjs'
+  gem 'rails-assets-ng-table'
+  gem 'rails-assets-angular-breadcrumb'
+end
 
 group :development do
   gem 'annotate', require: false

@@ -5,6 +5,7 @@ div.layout-content(layout='column' layout-fill layout-align='center center')
         tr
           th ID
           th Name
+          th Actions
 
       tbody
         tr(ng-repeat='kind in vm.kinds')
@@ -12,6 +13,11 @@ div.layout-content(layout='column' layout-fill layout-align='center center')
             | {{ kind.id }}
           td(data-title='Name')
             | {{ kind.name }}
+          td(layout='row' layout-wrap)
+            md-button.md-primary(aria-label='edit')
+              md-icon.md-default-theme(aria-hidden='true' md-svg-src='edit')
+            md-button.md-warn(aria-label='remove')
+              md-icon.md-default-theme(aria-hidden='true' md-svg-src='cross')
 
-  .actions(flex layout='row')
-    md-button.md-primary ui-sref='#' New Kind
+  md-button.md-fab.md-fab-bottom-right.md-default-theme(ui-sref='' aria-label='Add new kind')
+    md-icon.md-default-theme(aria-hidden='true' md-svg-src='add')

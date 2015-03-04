@@ -12,5 +12,5 @@ class Genre < ActiveRecord::Base
   has_many :film_genres
   has_many :films, through: :film_genres, dependent: :restrict_with_exception
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 end

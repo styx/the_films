@@ -5,13 +5,13 @@
 #= require angular-animate
 #= require angular-aria
 #= require angular-resource
+#= require angular-messages
 #= require angular-material
 #= require ng-rails-csrf
 #= require angular-rails-templates
 #= require angularjs/rails/resource
 #= require angular-ui-router
 #= require angular-breadcrumb
-#= require angular-contenteditable
 
 #= require services
 #= require controllers
