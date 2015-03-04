@@ -16,7 +16,7 @@ angular.module('Films.controllers.genres', ['ui.router'])
         views:
           '@':
             templateUrl: 'genres/index.html'
-            controller: ['genres', '$mdDialog', '$state', '$stateParams', (genres, $mdDialog, $state, $stateParams) ->
+            controller: ['genres', '$mdDialog', '$mdToast', '$state', '$stateParams', (genres, $mdDialog, $mdToast, $state, $stateParams) ->
                 vm = this
                 vm.genres = genres
 
@@ -31,6 +31,14 @@ angular.module('Films.controllers.genres', ['ui.router'])
                   $mdDialog.show(confirm).then ->
                     genre.delete().then (genre) ->
                       $state.forceReload()
+                    ,
+                      (response) ->
+                        message = response.data.errors.base.join("\n")
+                        $mdToast.show(
+                          $mdToast.simple()
+                            .content(message)
+                            .position('top right')
+                        )
 
                 vm
             ]
