@@ -17,7 +17,8 @@ angular.module('Films', [
   '$mdThemingProvider'
   '$breadcrumbProvider'
   '$mdIconProvider'
-  ($urlRouterProvider, $mdThemingProvider, $breadcrumbProvider, $mdIconProvider) ->
+  '$provide'
+  ($urlRouterProvider, $mdThemingProvider, $breadcrumbProvider, $mdIconProvider, $provide) ->
 
     $urlRouterProvider.otherwise('/films')
 
@@ -31,6 +32,17 @@ angular.module('Films', [
 
     $mdIconProvider
       .defaultIconSet("<%= asset_path('svgdefs.svg') %>")
+
+    $provide.decorator '$state', ['$delegate', '$stateParams', ($delegate, $stateParams) ->
+
+      $delegate.forceReload = ->
+        $delegate.go $delegate.current, $stateParams,
+          reload: true
+          inherit: false
+          notify: true
+
+      $delegate
+    ]
 ]
 
 .controller 'ApplicationController', [

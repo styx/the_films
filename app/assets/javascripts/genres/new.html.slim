@@ -10,7 +10,7 @@ div.layout-content(layout='column' layout-fill layout-align='center center')
             div ng-message='md-maxlength'  The name has to be less than 30 characters long.
 
         .actions(layout='row' layout-align='canter center')
-          md-button.md-primary.md-default-theme(aria-label='Back' flex ng-disabled='form.$invalid')
+          md-button.md-primary.md-default-theme(aria-label='Save' flex ng-disabled='form.$invalid')
             | Save
-          md-button.md-warn.md-default-theme(ui-sref='^' aria-label='Back' flex)
+          md-button.md-warn.md-default-theme(ui-sref='^.list' aria-label='Back' flex)
             | Cancel

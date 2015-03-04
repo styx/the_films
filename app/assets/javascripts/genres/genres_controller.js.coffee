@@ -30,10 +30,7 @@ angular.module('Films.controllers.genres', ['ui.router'])
 
                   $mdDialog.show(confirm).then ->
                     genre.delete().then (genre) ->
-                      $state.go $state.current, $stateParams,
-                        reload: true
-                        inherit: false
-                        notify: true
+                      $state.forceRealod()
 
                 vm
             ]
@@ -41,7 +38,7 @@ angular.module('Films.controllers.genres', ['ui.router'])
         ncyBreadcrumb:
           label: 'Genres'
 
-      .state 'genres.list.new',
+      .state 'genres.new',
         url: '/new'
         views:
           '@':
@@ -52,7 +49,7 @@ angular.module('Films.controllers.genres', ['ui.router'])
 
                 vm.save = ->
                   vm.genre.save()
-                  $state.go('^')
+                  $state.go('^.list', {}, reload: true)
 
                 vm
             ]

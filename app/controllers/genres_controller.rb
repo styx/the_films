@@ -1,5 +1,6 @@
 class GenresController < ApplicationController
   before_action :set_genre, only: [:show, :edit, :update, :destroy]
+  respond_to :json
 
   def index
     @genres = Genre.all
@@ -15,32 +16,24 @@ class GenresController < ApplicationController
   def create
     @genre = Genre.new(genre_params)
 
-    respond_to do |format|
-      if @genre.save
-        format.json { render status: :ok }
-      else
-        format.json { render json: @genre.errors, status: :unprocessable_entity }
-      end
+    if @genre.save
+      head :ok
+    else
+      render json: @genre.errors, status: :unprocessable_entity
     end
   end
 
   def update
-    respond_to do |format|
-      if @genre.update(genre_params)
-        format.html { redirect_to @genre, notice: 'Genre was successfully updated.' }
-        format.json { render :show, status: :ok, location: @genre }
-      else
-        format.html { render :edit }
-        format.json { render json: @genre.errors, status: :unprocessable_entity }
-      end
+    if @genre.update(genre_params)
+      render :show, status: :ok, location: @genre
+    else
+      render json: @genre.errors, status: :unprocessable_entity
     end
   end
 
   def destroy
     @genre.destroy
-    respond_to do |format|
-      format.json { head :no_content }
-    end
+    head :no_content
   end
 
   private
