@@ -30,7 +30,7 @@ angular.module('Films.controllers.genres', ['ui.router'])
 
                   $mdDialog.show(confirm).then ->
                     genre.delete().then (genre) ->
-                      $state.forceRealod()
+                      $state.forceReload()
 
                 vm
             ]

@@ -9,7 +9,7 @@
 #
 
 class Kind < ActiveRecord::Base
-  has_many :films, dependent: :restrict_with_exception
+  has_many :films, dependent: :restrict_with_error
 
   validates :name, presence: true, uniqueness: true
 end
