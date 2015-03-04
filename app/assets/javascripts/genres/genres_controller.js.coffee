@@ -16,29 +16,9 @@ angular.module('Films.controllers.genres', ['ui.router'])
         views:
           '@':
             templateUrl: 'genres/index.html'
-            controller: ['genres', '$mdDialog', '$mdToast', '$state', '$stateParams', (genres, $mdDialog, $mdToast, $state, $stateParams) ->
+            controller: ['genres', (genres) ->
                 vm = this
                 vm.genres = genres
-
-                vm.confirmDestroy = (genre) ->
-                  confirm = $mdDialog.confirm()
-                                     .title('Would you like to delete this genre?')
-                                     .content('This one will be removed permanently!')
-                                     .ariaLabel('Remove record')
-                                     .ok('Please do!')
-                                     .cancel('Noooooooo!')
-
-                  $mdDialog.show(confirm).then ->
-                    genre.delete().then (genre) ->
-                      $state.forceReload()
-                    ,
-                      (response) ->
-                        message = response.data.errors.base.join("\n")
-                        $mdToast.show(
-                          $mdToast.simple()
-                            .content(message)
-                            .position('top right')
-                        )
 
                 vm
             ]
