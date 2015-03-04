@@ -7,7 +7,7 @@ html(ng-app='Films')
     = javascript_include_tag 'application'
     = csrf_meta_tags
   body(layout='row' flex ng-controller='ApplicationController as app')
-    md-sidenav.md-sidenav-left.md-whiteframe-z2 layout='column' md-component-id='left' md-is-locked-open='$media("gt-md")'
+    md-sidenav.md-sidenav-left.md-whiteframe-z2 layout='column' md-component-id='left' md-is-locked-open='$mdMedia("gt-md")'
       md-toolbar.md-default-theme
         h1.md-toolbar-tools
           = link_to root_path, 'ui-sref' => 'films' do
