@@ -30,7 +30,7 @@ angular.module('Films.controllers.genres', ['ui.router'])
         url: '/new'
         views:
           '@':
-            templateUrl: 'genres/new.html'
+            templateUrl: 'genres/form.html'
             controller: ['$state', 'Genre', ($state, Genre) ->
                 vm = this
                 vm.genre = new Genre
@@ -45,4 +45,26 @@ angular.module('Films.controllers.genres', ['ui.router'])
         ncyBreadcrumb:
           label: 'New'
 
+      .state 'genres.edit',
+        url: '/edit/:id'
+        resolve:
+          genre: ['$stateParams', 'Genre', ($stateParams, Genre) ->
+            Genre.get($stateParams.id)
+          ]
+        views:
+          '@':
+            templateUrl: 'genres/form.html'
+            controller: ['$state', 'genre', ($state, genre) ->
+                vm = this
+                vm.genre = genre
+
+                vm.save = ->
+                  vm.genre.save()
+                  $state.go('^.list', {}, reload: true)
+
+                vm
+            ]
+            controllerAs: 'vm'
+        ncyBreadcrumb:
+          label: 'New'
 ]
