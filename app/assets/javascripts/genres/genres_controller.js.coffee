@@ -1,4 +1,18 @@
 angular.module('Films.controllers.genres', ['ui.router'])
+.controller 'Form', [
+  '$state'
+  'genre'
+  ($state, genre) ->
+    vm = this
+    vm.genre = genre
+
+    vm.save = ->
+      vm.genre.save().then ->
+        $state.go('^.list', {}, reload: true)
+
+    vm
+]
+
 .config [
   '$stateProvider'
   ($stateProvider) ->
@@ -29,23 +43,11 @@ angular.module('Films.controllers.genres', ['ui.router'])
       .state 'genres.new',
         url: '/new'
         resolve:
-          genre: ['Genre', (Genre) ->
-            new Genre
-          ]
+          genre: ['Genre', (Genre) -> new Genre]
         views:
           '@':
             templateUrl: 'genres/form.html'
-            controller: ['$state', 'genre', ($state, genre) ->
-                vm = this
-                vm.genre = genre
-
-                vm.save = ->
-                  vm.genre.save().then ->
-                    $state.go('^.list', {}, reload: true)
-
-                vm
-            ]
-            controllerAs: 'vm'
+            controller: 'Form as vm'
         ncyBreadcrumb:
           label: 'New'
           parent: 'genres.list'
@@ -59,17 +61,7 @@ angular.module('Films.controllers.genres', ['ui.router'])
         views:
           '@':
             templateUrl: 'genres/form.html'
-            controller: ['$state', 'genre', ($state, genre) ->
-                vm = this
-                vm.genre = genre
-
-                vm.save = ->
-                  vm.genre.save().then ->
-                    $state.go('^.list', {}, reload: true)
-
-                vm
-            ]
-            controllerAs: 'vm'
+            controller: 'Form as vm'
         ncyBreadcrumb:
           label: '{{vm.genre.name}}'
           parent: 'genres.list'
