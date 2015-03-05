@@ -44,6 +44,7 @@ angular.module('Films.controllers.genres', ['ui.router'])
             controllerAs: 'vm'
         ncyBreadcrumb:
           label: 'New'
+          parent: 'genres.list'
 
       .state 'genres.edit',
         url: '/edit/:id'
@@ -66,5 +67,6 @@ angular.module('Films.controllers.genres', ['ui.router'])
             ]
             controllerAs: 'vm'
         ncyBreadcrumb:
-          label: 'New'
+          label: '{{vm.genre.name}}'
+          parent: 'genres.list'
 ]
