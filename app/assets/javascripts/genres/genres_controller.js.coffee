@@ -28,16 +28,20 @@ angular.module('Films.controllers.genres', ['ui.router'])
 
       .state 'genres.new',
         url: '/new'
+        resolve:
+          genre: ['Genre', (Genre) ->
+            new Genre
+          ]
         views:
           '@':
             templateUrl: 'genres/form.html'
-            controller: ['$state', 'Genre', ($state, Genre) ->
+            controller: ['$state', 'genre', ($state, genre) ->
                 vm = this
-                vm.genre = new Genre
+                vm.genre = genre
 
                 vm.save = ->
-                  vm.genre.save()
-                  $state.go('^.list', {}, reload: true)
+                  vm.genre.save().then ->
+                    $state.go('^.list', {}, reload: true)
 
                 vm
             ]
@@ -60,8 +64,8 @@ angular.module('Films.controllers.genres', ['ui.router'])
                 vm.genre = genre
 
                 vm.save = ->
-                  vm.genre.save()
-                  $state.go('^.list', {}, reload: true)
+                  vm.genre.save().then ->
+                    $state.go('^.list', {}, reload: true)
 
                 vm
             ]
