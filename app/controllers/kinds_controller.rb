@@ -1,5 +1,6 @@
 class KindsController < ApplicationController
   before_action :set_kind, only: [:show, :edit, :update, :destroy]
+  respond_to :json
 
   def index
     @kinds = Kind.all
@@ -8,44 +9,29 @@ class KindsController < ApplicationController
   def show
   end
 
-  def new
-    @kind = Kind.new
-  end
-
-  def edit
-  end
-
   def create
     @kind = Kind.new(kind_params)
 
-    respond_to do |format|
-      if @kind.save
-        format.html { redirect_to @kind, notice: 'Kind was successfully created.' }
-        format.json { render :show, status: :created, location: @kind }
-      else
-        format.html { render :new }
-        format.json { render json: @kind.errors, status: :unprocessable_entity }
-      end
+    if @kind.save
+      head :ok
+    else
+      render json: @kind.errors.messages, status: :unprocessable_entity
     end
   end
 
   def update
-    respond_to do |format|
-      if @kind.update(kind_params)
-        format.html { redirect_to @kind, notice: 'Kind was successfully updated.' }
-        format.json { render :show, status: :ok, location: @kind }
-      else
-        format.html { render :edit }
-        format.json { render json: @kind.errors, status: :unprocessable_entity }
-      end
+    if @kind.update(kind_params)
+      render :show, status: :ok
+    else
+      render json: @kind.errors.messages, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @kind.destroy
-    respond_to do |format|
-      format.html { redirect_to kinds_url, notice: 'Kind was successfully destroyed.' }
-      format.json { head :no_content }
+    if @kind.destroy
+      head :no_content
+    else
+      render json: { errors: @kind.errors.messages }, status: :unprocessable_entity
     end
   end
 

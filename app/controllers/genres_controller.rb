@@ -6,6 +6,9 @@ class GenresController < ApplicationController
     @genres = Genre.all
   end
 
+  def show
+  end
+
   def create
     @genre = Genre.new(genre_params)
 
