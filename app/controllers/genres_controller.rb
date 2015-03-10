@@ -6,22 +6,19 @@ class GenresController < ApplicationController
     @genres = Genre.all
   end
 
-  def show
-  end
-
   def create
     @genre = Genre.new(genre_params)
 
     if @genre.save
       head :ok
     else
-      render json: @genre.errors, status: :unprocessable_entity
+      render json: @genre.errors.messages, status: :unprocessable_entity
     end
   end
 
   def update
     if @genre.update(genre_params)
-      render :show, status: :ok, location: @genre
+      render :show, status: :ok
     else
       render json: @genre.errors.messages, status: :unprocessable_entity
     end
@@ -31,7 +28,7 @@ class GenresController < ApplicationController
     if @genre.destroy
       head :no_content
     else
-      render json: { errors: @genre.errors }, status: :unprocessable_entity
+      render json: { errors: @genre.errors.messages }, status: :unprocessable_entity
     end
   end
 
