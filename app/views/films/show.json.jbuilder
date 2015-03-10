@@ -1,1 +1,1 @@
-json.extract! @film, :id, :name
+json.extract! @film, :id, :name, :gapoif, :url

@@ -12,40 +12,39 @@ class FilmsController < ApplicationController
     @film = Film.new
   end
 
-  def edit
+  def create
+    @genre = Genre.new(genre_params)
+
+    if @genre.save
+      head :ok
+    else
+      render json: @genre.errors.messages, status: :unprocessable_entity
+    end
   end
 
   def create
-    @film = Film.new(film_params)
+    @film = Film.new(film_params.merge(gapoif: ''))
 
-    respond_to do |format|
-      if @film.save
-        format.html { redirect_to @film, notice: 'Film was successfully created.' }
-        format.json { render :show, status: :created, location: @film }
-      else
-        format.html { render :new }
-        format.json { render json: @film.errors, status: :unprocessable_entity }
-      end
+    if @film.save
+      head :ok
+    else
+      render json: @film.errors.messages, status: :unprocessable_entity
     end
   end
 
   def update
-    respond_to do |format|
-      if @film.update(film_params)
-        format.html { redirect_to @film, notice: 'Film was successfully updated.' }
-        format.json { render :show, status: :ok, location: @film }
-      else
-        format.html { render :edit }
-        format.json { render json: @film.errors, status: :unprocessable_entity }
-      end
+    if @film.update(film_params)
+      render :show, status: :ok
+    else
+      render json: @film.errors.messages, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @film.destroy
-    respond_to do |format|
-      format.html { redirect_to films_url, notice: 'Film was successfully destroyed.' }
-      format.json { head :no_content }
+    if @film.destroy
+      head :no_content
+    else
+      render json: { errors: @film.errors.messages }, status: :unprocessable_entity
     end
   end
 
@@ -56,6 +55,10 @@ class FilmsController < ApplicationController
   end
 
   def film_params
-    params.require(:film).permit(:name)
+    params.require(:film).permit(
+      :name,
+      :gapoif,
+      :url
+    )
   end
 end
