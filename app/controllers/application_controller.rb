@@ -1,5 +1,13 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :null_session
+  respond_to :json
+
+  before_action :use_json_locale_for_xhr
+
+  # This is kinda hack. Can be reworked in Rails 5
+  # but the sollution is also will not be great
+  # for the moment.
+  def use_json_locale_for_xhr
+    I18n.locale = 'json' if request.xhr?
+  end
 end

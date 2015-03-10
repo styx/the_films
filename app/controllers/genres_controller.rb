@@ -9,10 +9,6 @@ class GenresController < ApplicationController
   def show
   end
 
-  def new
-    @genre = Genre.new
-  end
-
   def create
     @genre = Genre.new(genre_params)
 
@@ -27,7 +23,7 @@ class GenresController < ApplicationController
     if @genre.update(genre_params)
       render :show, status: :ok, location: @genre
     else
-      render json: @genre.errors, status: :unprocessable_entity
+      render json: @genre.errors.messages, status: :unprocessable_entity
     end
   end
 

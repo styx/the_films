@@ -5,7 +5,7 @@ div.layout-content(layout='column' layout-fill layout-align='center center')
         md-input-container
           label Name
           input(md-maxlength='30' name='name' ng-model='vm.genre.name' required)
-          div ng-messages="form.name.$error"
+          div ng-messages='form.name.$error'
             div ng-message='required' This field is required.
             div ng-message='md-maxlength'  The name has to be less than 30 characters long.
 

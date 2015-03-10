@@ -14,8 +14,9 @@
 #= require angular-breadcrumb
 
 #= require services
-#= require controllers
+#= require_tree ./services
 #= require_tree ./directives
+#= require controllers
 #= require app
 
 #= require_tree ./breadcrumbs

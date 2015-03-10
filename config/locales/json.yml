@@ -1,0 +1,8 @@
+json:
+  errors:
+    format: '%{attribute} %{message}'
+    messages:
+      blank: required
+      empty: required
+      taken: exists
+      too_long: md-maxlength

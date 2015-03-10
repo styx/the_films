@@ -1,25 +1,32 @@
 angular.module('Films.controllers.genres', ['ui.router'])
 .controller 'Form', [
+  '$scope'
   '$state'
   'genre'
-  ($state, genre) ->
+  'railsErrors'
+  ($scope, $state, genre, railsErrors) ->
     vm = this
     vm.genre = genre
 
     vm.save = ->
       vm.genre.save().then ->
         $state.go('^.list', {}, reload: true)
+      ,
+        (response) ->
+          railsErrors.apply($scope.form, response)
 
     vm
 ]
 
 .config [
   '$stateProvider'
+
   ($stateProvider) ->
     $stateProvider
       .state 'genres',
         url: '/genres'
         abstract: true
+
 
       .state 'genres.list',
         url: ''
@@ -40,6 +47,7 @@ angular.module('Films.controllers.genres', ['ui.router'])
         ncyBreadcrumb:
           label: 'Genres'
 
+
       .state 'genres.new',
         url: '/new'
         resolve:
@@ -51,6 +59,7 @@ angular.module('Films.controllers.genres', ['ui.router'])
         ncyBreadcrumb:
           label: 'New'
           parent: 'genres.list'
+
 
       .state 'genres.edit',
         url: '/edit/:id'
