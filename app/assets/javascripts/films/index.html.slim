@@ -26,5 +26,5 @@ div.layout-content(layout='column' layout-fill layout-align='center center')
             a(href='http://www.kinopoisk.ru{{ film.url }}' target='_blank' title='kinopoisk.ru')
               md-icon.md-default-theme(aria-hidden='true' md-svg-src='kinopoisk')
 
-  md-button.md-fab.md-fab-bottom-right.md-default-theme(ng-href='#' aria-label='Add new film')
+  md-button.md-fab.md-fab-bottom-right.add-bottom-right.md-default-theme(ui-sref='^.new' aria-label='Add new film')
     md-icon.md-default-theme(aria-hidden='true' md-svg-src='add')
