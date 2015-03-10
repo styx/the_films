@@ -1,5 +1,5 @@
 angular.module('Films.controllers.genres', ['ui.router'])
-.controller 'Form', [
+.controller 'GenreForm', [
   '$scope'
   '$state'
   'genre'
@@ -55,7 +55,7 @@ angular.module('Films.controllers.genres', ['ui.router'])
         views:
           '@':
             templateUrl: 'genres/form.html'
-            controller: 'Form as vm'
+            controller: 'GenreForm as vm'
         ncyBreadcrumb:
           label: 'New'
           parent: 'genres.list'
@@ -70,7 +70,7 @@ angular.module('Films.controllers.genres', ['ui.router'])
         views:
           '@':
             templateUrl: 'genres/form.html'
-            controller: 'Form as vm'
+            controller: 'GenreForm as vm'
         ncyBreadcrumb:
           label: '{{vm.genre.name}}'
           parent: 'genres.list'
