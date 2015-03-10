@@ -1,6 +1,5 @@
 class KindsController < ApplicationController
   before_action :set_kind, only: [:show, :edit, :update, :destroy]
-  respond_to :json
 
   def index
     @kinds = Kind.all
