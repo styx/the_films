@@ -21,6 +21,7 @@ gem 'angularjs-rails-resource'
 gem 'ng-rails-csrf'
 
 gem 'responders'
+gem 'unicode'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-angular-material', '>= 0.8.2'
