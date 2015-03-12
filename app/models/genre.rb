@@ -13,4 +13,6 @@ class Genre < ActiveRecord::Base
   has_many :films, through: :film_genres, dependent: :restrict_with_error
 
   validates :name, presence: true, uniqueness: true, length: { maximum: 30 }
+
+  default_scope { order(:id) }
 end
