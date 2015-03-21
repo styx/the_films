@@ -22,4 +22,6 @@ class Film < ActiveRecord::Base
 
   validates :name, :gapoif, :url, presence: true
   validates :url, uniqueness: true
+
+  default_scope { order(:id) }
 end
