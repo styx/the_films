@@ -1,25 +1,34 @@
-div.layout-content(layout='column' layout-fill layout-align='center center')
+div.layout-content(layout='column' layout-align='center center')
   .md-whiteframe-z1.table-responsive-vertical(flex layout-fill)
     md-content.md-padding
       form(name='form' ng-submit='vm.save()' novalidate)
-        md-input-container
-          label Name
-          input(md-maxlength='30' name='name' ng-model='vm.film.name' required)
-          div ng-messages='form.name.$error'
-            div ng-message='required' This field is required.
-            div ng-message='md-maxlength'  The name has to be less than 30 characters long.
-        md-input-container
-          label Gapoif
-          input(md-maxlength='30' name='gapoif' ng-model='vm.film.gapoif' required)
-          div ng-messages='form.gapoif.$error'
-            div ng-message='required' This field is required.
-            /div ng-message='md-maxlength'  The name has to be less than 30 characters long.
+        div(layout='row')
+          md-input-container(flex)
+            label Name
+            input(name='name' ng-model='vm.film.name' required)
+            div ng-messages='form.name.$error'
+              div ng-message='required' This field is required.
+          md-input-container(flex)
+            label Gapoif
+            input(name='gapoif' ng-model='vm.film.gapoif' required)
+            div ng-messages='form.gapoif.$error'
+              div ng-message='required' This field is required.
+        div(layout='row')
+          md-input-container(flex)
+            label Year
+            input(name='year' ng-model='vm.film.year')
+          md-input-container(flex)
+            label Mins
+            input(name='mins' ng-model='vm.film.mins')
         md-input-container
           label URL
-          input(md-maxlength='30' name='url' ng-model='vm.film.url' required)
+          input(name='url' ng-model='vm.film.url' required)
           div ng-messages='form.url.$error'
             div ng-message='required' This field is required.
-            /div ng-message='md-maxlength'  The name has to be less than 30 characters long.
+
+        md-select(ng-model='vm.kind' placeholder='Kind')
+          md-option ng-value='kind' ng-repeat='kind in vm.kinds' ng-selected='kind.id == vm.kind.id'
+            | {{ kind.name }}
 
         .actions(layout='row' layout-align='canter center')
           md-button.md-primary.md-default-theme(aria-label='Save' flex ng-disabled='form.$invalid')

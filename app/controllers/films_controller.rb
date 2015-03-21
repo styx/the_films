@@ -58,7 +58,8 @@ class FilmsController < ApplicationController
     params.require(:film).permit(
       :name,
       :gapoif,
-      :url
+      :url,
+      :kind_id
     )
   end
 end

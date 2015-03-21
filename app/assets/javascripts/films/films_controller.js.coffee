@@ -3,12 +3,16 @@ angular.module('Films.controllers.films', ['ui.router'])
   '$scope'
   '$state'
   'film'
+  'kinds'
   'railsErrors'
-  ($scope, $state, film, railsErrors) ->
+  ($scope, $state, film, kinds, railsErrors) ->
     vm = this
     vm.film = film
+    vm.kinds = kinds
+    vm.kind = film.kind
 
     vm.save = ->
+      vm.film.kind = vm.kind
       vm.film.save().then ->
         $state.go('^.list', {}, reload: true)
       ,
@@ -66,6 +70,9 @@ angular.module('Films.controllers.films', ['ui.router'])
         resolve:
           film: ['$stateParams', 'Film', ($stateParams, Film) ->
             Film.get($stateParams.id)
+          ]
+          kinds: ['Kind', (Kind) ->
+            Kind.query()
           ]
         views:
           '@':
