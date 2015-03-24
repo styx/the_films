@@ -32,6 +32,7 @@ angular.module('Films', [
 
     $mdIconProvider
       .defaultIconSet("<%= asset_path('svgdefs.svg') %>")
+      .icon('logo', "<%= asset_path('logo.svg') %>")
 
     $provide.decorator '$state', ['$delegate', '$stateParams', ($delegate, $stateParams) ->
 

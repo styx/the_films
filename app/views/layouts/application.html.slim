@@ -10,8 +10,9 @@ html(ng-app='Films')
     md-sidenav.md-sidenav-left.md-whiteframe-z2 layout='column' md-component-id='left' md-is-locked-open='$mdMedia("gt-md")'
       md-toolbar.md-default-theme
         h1.md-toolbar-tools
-          = link_to root_path, 'ui-sref' => 'films' do
-            | TheFilms
+          a(ui-sref='films.list' layout='row')
+            md-icon(id='logo' aria-hidden='true' md-svg-src='logo')
+            #logo-text The Films
       st-side-menu(items='app.menu')
 
     div(layout='column' layout-fill role='main')
