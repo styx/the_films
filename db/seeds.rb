@@ -1,7 +1,40 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+Genre.create!([
+  {name: "Триллер"},
+  {name: "Драма"},
+  {name: "Мелодрама"},
+  {name: "Комедия"},
+  {name: "Криминал"},
+  {name: "Боевик"},
+  {name: "Военный"},
+  {name: "Фантастика"},
+  {name: "Мюзикл"},
+  {name: "Документальный"},
+  {name: "Для взрослых"},
+  {name: "Фэнтези"},
+  {name: "Ужасы"},
+  {name: "Детектив"},
+  {name: "Мультфильм"},
+  {name: "Семейный"},
+  {name: "Вестерн"},
+  {name: "Биография"},
+  {name: "Приключения"},
+  {name: "История"},
+  {name: "Спорт"},
+  {name: "Музыка"},
+  {name: "Аниме"},
+  {name: "Концерт"},
+  {name: "Реальное тв"},
+  {name: "Новости"},
+  {name: "Ток-шоу"},
+  {name: "Короткометражка"},
+  {name: "Игра"},
+  {name: "Фильм-нуар"},
+  {name: "Детский"}
+])
+Kind.create!([
+  {name: "Фильм"},
+  {name: "Сериал"},
+  {name: "ТВ"},
+  {name: "Мини-сериал"},
+  {name: "Видео"}
+])
