@@ -33,5 +33,5 @@ div.layout-content(layout='column' layout-align='center center')
         .actions(layout='row' layout-align='canter center')
           md-button.md-primary.md-default-theme(aria-label='Save' flex ng-disabled='form.$invalid')
             | Save
-          md-button.md-warn.md-default-theme(ui-sref='^.list' aria-label='Back' flex)
+          md-button.md-warn.md-default-theme(ng-click='goBack("^.^.list")' aria-label='Back' type='button' flex)
             | Cancel

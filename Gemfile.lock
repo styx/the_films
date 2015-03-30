@@ -153,8 +153,6 @@ GEM
     rails-assets-angular-ui-router (0.2.13)
       rails-assets-angular (>= 1.0.8)
     rails-assets-hammerjs (2.0.4)
-    rails-assets-ng-table (0.5.4)
-      rails-assets-angular (~> 1)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.6)
@@ -186,7 +184,7 @@ GEM
     rspec-support (3.2.2)
     ruby-progressbar (1.7.5)
     sass (3.4.13)
-    sass-rails (5.0.1)
+    sass-rails (5.0.2)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.1)
       sprockets (>= 2.8, < 4.0)
@@ -196,9 +194,6 @@ GEM
       activemodel
       elasticsearch (>= 1)
       hashie
-    simple_form (3.1.0)
-      actionpack (~> 4.0)
-      activemodel (~> 4.0)
     slim (3.0.3)
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
@@ -233,6 +228,7 @@ GEM
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     unicode (0.4.4.2)
+    will_paginate (3.0.7)
 
 PLATFORMS
   ruby
@@ -259,13 +255,12 @@ DEPENDENCIES
   rails-assets-angular-material (>= 0.8.2)!
   rails-assets-angular-ui-router!
   rails-assets-hammerjs!
-  rails-assets-ng-table!
   responders
   sass-rails (~> 5.0)
   searchkick
-  simple_form
   slim-rails
   table_print
   thin
   uglifier (>= 1.3.0)
   unicode
+  will_paginate

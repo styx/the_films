@@ -1,0 +1,19 @@
+ul.pagination(ng-if='1 < pages.length' layout='row')
+  li(ng-if='boundaryLinks')
+    md-button.md-primary(ng-disabled='pagination.current == 1' ui-sref='films.list({page: 1})')
+      | «
+  li(ng-if='directionLinks')
+    md-button.md-primary(ng-disabled='pagination.current == 1' ui-sref='films.list({page: pagination.current - 1})' aria-label='Previous page')
+      md-icon.md-default-theme(aria-hidden='true' md-svg-src='keyboard_arrow_left')
+  li(ng-repeat='pageNumber in pages track by $index')
+    md-button.md-hue-2(
+      ng-disabled="pageNumber == '...'"
+      ui-sref='films.list({page: pageNumber})'
+      ng-class="{ 'md-accent' : pagination.current == pageNumber, 'md-primary' : pagination.current != pageNumber }")
+      | {{ pageNumber }}
+  li(ng-if='directionLinks')
+    md-button.md-primary(ng-disabled='pagination.current == pagination.last' ui-sref='films.list({page: pagination.current + 1})' aria-label='Next page')
+      md-icon.md-default-theme(aria-hidden='true' md-svg-src='keyboard_arrow_right')
+  li(ng-if='boundaryLinks')
+    md-button.md-primary(ng-disabled='pagination.current == pagination.last' ui-sref='films.list({page: pagination.last})')
+      | »

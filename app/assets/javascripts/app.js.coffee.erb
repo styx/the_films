@@ -7,6 +7,7 @@ angular.module('Films', [
   'templates'
   'rails'
   'ncy-angular-breadcrumb'
+  'angularUtils.directives.dirPagination'
   'Films.services'
   'Films.directives'
   'Films.controllers'
@@ -43,6 +44,20 @@ angular.module('Films', [
 
       $delegate
     ]
+]
+
+.run [
+  '$rootScope'
+  '$state'
+  ($rootScope, $state) ->
+    $rootScope.previousState
+    $rootScope.currentState
+    $rootScope.$on '$stateChangeSuccess', (ev, to, toParams, from, fromParams) ->
+      $rootScope.previousState = { name: from.name, params: fromParams }
+
+    $rootScope.goBack = (defaultState, options) ->
+      $state.go($rootScope.previousState.name || defaultState, $rootScope.previousState.params, options)
+
 ]
 
 .controller 'ApplicationController', [

@@ -10,7 +10,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 
 gem 'slim-rails'
-gem 'simple_form'
+gem 'will_paginate'
 gem 'searchkick'
 
 gem 'bourbon'
@@ -27,7 +27,6 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-angular-material', '>= 0.8.2'
   gem 'rails-assets-angular-ui-router'
   gem 'rails-assets-hammerjs'
-  gem 'rails-assets-ng-table'
   gem 'rails-assets-angular-breadcrumb'
 end
 

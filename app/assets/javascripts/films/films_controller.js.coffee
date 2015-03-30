@@ -1,11 +1,10 @@
 angular.module('Films.controllers.films', ['ui.router'])
 .controller 'FilmForm', [
   '$scope'
-  '$state'
   'film'
   'kinds'
   'railsErrors'
-  ($scope, $state, film, kinds, railsErrors) ->
+  ($scope, film, kinds, railsErrors) ->
     vm = this
     vm.film = film
     vm.kinds = kinds
@@ -14,7 +13,7 @@ angular.module('Films.controllers.films', ['ui.router'])
     vm.save = ->
       vm.film.kind = vm.kind
       vm.film.save().then ->
-        $state.go('^.list', {}, reload: true)
+        $scope.goBack('^.^.list', reload: true)
       ,
         (response) ->
           railsErrors.apply($scope.form, response)
@@ -33,17 +32,19 @@ angular.module('Films.controllers.films', ['ui.router'])
 
 
       .state 'films.list',
-        url: ''
+        url: '/list/:page'
         resolve:
-          films: ['Film', (Film) ->
-            Film.query()
+          films: ['Film', '$stateParams', (Film, $stateParams) ->
+            Film.query(page: $stateParams.page || 1)
           ]
         views:
           '@':
             templateUrl: 'films/index.html'
-            controller: ['films', (films) ->
+            controller: ['films', '$stateParams', (films, $stateParams) ->
                 vm = this
-                vm.films = films
+                vm.films = films.data
+                vm.total = films.total
+                vm.currentPage = $stateParams.page || 1
 
                 vm
             ]
@@ -52,7 +53,15 @@ angular.module('Films.controllers.films', ['ui.router'])
           label: 'Films'
 
 
-      .state 'films.new',
+      .state 'films.form',
+        url: ''
+        abstract: true
+        resolve:
+          kinds: ['Kind', (Kind) ->
+            Kind.query()
+          ]
+
+      .state 'films.form.new',
         url: '/new'
         resolve:
           film: ['Film', (Film) -> new Film]
@@ -64,15 +73,11 @@ angular.module('Films.controllers.films', ['ui.router'])
           label: 'New'
           parent: 'films.list'
 
-
-      .state 'films.edit',
+      .state 'films.form.edit',
         url: '/edit/:id'
         resolve:
           film: ['$stateParams', 'Film', ($stateParams, Film) ->
             Film.get($stateParams.id)
-          ]
-          kinds: ['Kind', (Kind) ->
-            Kind.query()
           ]
         views:
           '@':
@@ -84,7 +89,7 @@ angular.module('Films.controllers.films', ['ui.router'])
 
 
       .state 'films.show',
-        url: '/:id'
+        url: '/details/:id'
         resolve:
           film: ['$stateParams', 'Film', ($stateParams, Film) ->
             Film.get($stateParams.id)

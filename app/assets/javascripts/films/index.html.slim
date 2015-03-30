@@ -12,7 +12,7 @@ div.layout-content(layout='column' layout-fill layout-align='center center')
           th Actions
 
       tbody
-        tr(ng-repeat='film in vm.films')
+        tr(dir-paginate="film in vm.films | itemsPerPage: #{WillPaginate.per_page}" total-items='vm.total' current-page='vm.currentPage')
           td(data-title='ID')
             | {{ film.id }}
           td(data-title='Name')
@@ -29,9 +29,11 @@ div.layout-content(layout='column' layout-fill layout-align='center center')
 
           td(data-title='Actions')
             md-button.md-primary(aria-label='edit')
-              md-icon.md-default-theme(aria-hidden='true' md-svg-src='edit' ui-sref='^.edit({id: film.id})')
+              md-icon.md-default-theme(aria-hidden='true' md-svg-src='edit' ui-sref='^.form.edit({id: film.id})')
             md-button.md-warn(aria-label='remove' st-confirm-destroy='film')
               md-icon.md-default-theme(aria-hidden='true' md-svg-src='cross')
 
-  md-button.md-fab.md-fab-bottom-right.add-bottom-right.md-default-theme(ui-sref='^.new' aria-label='Add new film')
+    div(layout='row' layout-fill layout-align='center center')
+      dir-pagination-controls
+  md-button.md-fab.md-fab-bottom-right.add-bottom-right.md-default-theme(ui-sref='^.form.new' aria-label='Add new film')
     md-icon.md-default-theme(aria-hidden='true' md-svg-src='add')
