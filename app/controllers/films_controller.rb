@@ -59,6 +59,8 @@ class FilmsController < ApplicationController
       :name,
       :gapoif,
       :url,
+      :year,
+      :mins,
       :kind_id
     )
   end
