@@ -17,7 +17,7 @@
 class Film < ActiveRecord::Base
   belongs_to :kind
 
-  has_many :film_genres
+  has_many :film_genres, dependent: :destroy
   has_many :genres, through: :film_genres
 
   validates :name, :gapoif, :url, presence: true

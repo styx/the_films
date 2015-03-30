@@ -30,23 +30,29 @@ angular.module('Films.controllers.films', ['ui.router'])
         url: '/films'
         abstract: true
 
-
       .state 'films.list',
         url: '/list/:page'
         resolve:
-          films: ['Film', '$stateParams', (Film, $stateParams) ->
-            Film.query(page: $stateParams.page || 1)
+          currentPage: ['$stateParams', ($stateParams) ->
+            $stateParams.page || 1
+          ],
+          films: ['Film', 'currentPage', (Film, currentPage) ->
+            Film.query(page: currentPage)
           ]
         views:
           '@':
             templateUrl: 'films/index.html'
-            controller: ['films', '$stateParams', (films, $stateParams) ->
-                vm = this
+            controller: ['films', '$state', 'currentPage', (films, $state, currentPage) ->
+              vm = this
+              vm.currentPage = currentPage
+
+              if (currentPage != 1 && films.data.length == 0)
+                $state.go('films.list', page: currentPage - 1)
+              else
                 vm.films = films.data
                 vm.total = films.total
-                vm.currentPage = $stateParams.page || 1
 
-                vm
+              vm
             ]
             controllerAs: 'vm'
         ncyBreadcrumb:
