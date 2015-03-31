@@ -1,7 +1,33 @@
 div(layout='column' layout-fill layout-align='center center')
+  md-card(layout-fill layout-align='center center')
+    h1.md-title
+      | {{ vm.film.name }}
 
-  div
-    | {{ vm.film.name }}
+    table
+      tbody
+        tr
+          td
+            | Mins
+          td
+            | {{ vm.film.mins }}
+        tr
+          td
+            | Year
+          td
+            | {{ vm.film.year }}
+        tr
+          td
+            | Kind
+          td
+            | {{ vm.film.kind.name }}
+        tr
+          td
+            | Genres
+          td
+            md-chips
+              span.md-chip(ng-repeat='genre in vm.film.genres')
+                | {{ genre.name }}
 
   .actions(flex layout='row')
-    md-button.md-primary ui-sref='^.list' Back
+    md-button.md-primary ng-click='goBack("^.list")'
+      | Back to list
