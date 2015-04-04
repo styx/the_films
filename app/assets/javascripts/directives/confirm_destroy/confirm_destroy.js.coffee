@@ -6,9 +6,8 @@ angular.module('Films.directives.stConfirmDestroy', [])
   '$stateParams'
   ($mdDialog, $mdToast, $state, $stateParams) ->
     restrict: 'A'
-    scope: {
+    scope:
       obj: '=stConfirmDestroy'
-    }
     link: (scope, element, attributes) ->
       obj = scope.obj
       element.bind 'click', ->
