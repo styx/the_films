@@ -111,6 +111,7 @@ angular.module('Films.controllers.films', ['ui.router'])
             ]
             controllerAs: 'vm'
         ncyBreadcrumb:
+          parent: 'films.list'
           label: '{{vm.film.name}}'
 
 ]
