@@ -1,6 +1,9 @@
 md-toolbar.md-default-theme
-  .md-toolbar-tools(ng-click='app.toggleLeftMenu()')
-    .menu-icon(aria-label='open menu' hide-gt-md flex)
-      md-icon(aria-hidden='true' md-svg-src='menu')
-    .fill-height(flex layout='row')
-      div(ncy-breadcrumb)
+  .md-toolbar-tools(layout='row' layout-align='space-between center')
+    div(layout='row')
+      .menu-icon(ng-click='app.toggleLeftMenu()' aria-label='open menu' hide-gt-md flex)
+        md-icon(aria-hidden='true' md-svg-src='menu')
+      .fill-height(layout='row' flex)
+        div(ncy-breadcrumb)
+    .fill-height(layout='row')
+      st-search

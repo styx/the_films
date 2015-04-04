@@ -31,13 +31,13 @@ angular.module('Films.controllers.films', ['ui.router'])
         abstract: true
 
       .state 'films.list',
-        url: '/list/:page'
+        url: '/list/:page?q'
         resolve:
           currentPage: ['$stateParams', ($stateParams) ->
-            $stateParams.page || 1
+            $stateParams.page ||= 1
           ],
-          films: ['Film', 'currentPage', (Film, currentPage) ->
-            Film.query(page: currentPage)
+          films: ['$stateParams', 'Film', 'currentPage', ($stateParams, Film, currentPage) ->
+            Film.query(page: $stateParams)
           ]
         views:
           '@':
