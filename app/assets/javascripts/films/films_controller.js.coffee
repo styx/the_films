@@ -37,7 +37,7 @@ angular.module('Films.controllers.films', ['ui.router'])
             $stateParams.page ||= 1
           ],
           films: ['$stateParams', 'Film', 'currentPage', ($stateParams, Film, currentPage) ->
-            Film.query(page: $stateParams)
+            Film.query($stateParams)
           ]
         views:
           '@':
