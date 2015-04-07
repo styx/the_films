@@ -9,6 +9,12 @@ angular.module('Films.directives.stSearch', [])
         if (typeof q == 'string')
           $scope.q = q
 
+        input = elem.find('input')
+
+        $scope.clear = ->
+          $scope.q = ''
+          input.focus()
+
         elem.bind 'keydown keypress', (e) ->
           if (e.which == 13)
             $scope.$apply ->
