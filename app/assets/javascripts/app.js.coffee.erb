@@ -51,7 +51,6 @@ angular.module('Films', [
   '$state'
   ($rootScope, $state) ->
     $rootScope.previousState
-    $rootScope.currentState
     $rootScope.$on '$stateChangeSuccess', (ev, to, toParams, from, fromParams) ->
       $rootScope.previousState = { name: from.name, params: fromParams }
 
