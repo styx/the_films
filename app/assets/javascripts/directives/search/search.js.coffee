@@ -1,15 +1,17 @@
 angular.module('Films.directives.stSearch', [])
   .directive 'stSearch', [
-    '$location'
-    ($location) ->
+    '$rootScope'
+    '$state'
+    '$stateParams'
+    ($rootScope, $state, $stateParams) ->
       restrict: 'E'
       templateUrl: 'directives/search/template.html'
       link: ($scope, elem, attr, ctrl) ->
-        q = $location.search()['q']
-        if (typeof q == 'string')
-          $scope.q = q
 
         input = elem.find('input')
+
+        $rootScope.$on '$stateChangeSuccess', (ev, to, toParams, from, fromParams) ->
+          $scope.q = $stateParams['q']
 
         $scope.clear = ->
           $scope.q = ''
@@ -17,9 +19,7 @@ angular.module('Films.directives.stSearch', [])
 
         elem.bind 'keydown keypress', (e) ->
           if (e.which == 13)
-            $scope.$apply ->
-              newSearchPath = angular.extend($location.search(), {q: $scope.q})
-              $location.search(newSearchPath)
+            $state.go($state.current.name, angular.extend($stateParams, {page: undefined, q: $scope.q}))
 
             e.preventDefault()
   ]
