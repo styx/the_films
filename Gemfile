@@ -11,7 +11,7 @@ gem 'jbuilder', '~> 2.0'
 
 gem 'slim-rails'
 gem 'will_paginate'
-gem 'searchkick'
+gem 'chewy'
 
 gem 'bourbon'
 
