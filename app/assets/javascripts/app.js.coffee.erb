@@ -21,7 +21,7 @@ angular.module('Films', [
   '$provide'
   ($urlRouterProvider, $mdThemingProvider, $breadcrumbProvider, $mdIconProvider, $provide) ->
 
-    $urlRouterProvider.otherwise('/films')
+    $urlRouterProvider.otherwise('/films/list')
 
     $mdThemingProvider.theme('default')
       .primaryPalette('indigo')
