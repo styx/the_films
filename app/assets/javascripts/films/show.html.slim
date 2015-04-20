@@ -1,7 +1,10 @@
 div(layout='column' layout-fill layout-align='center center')
   md-card(layout-fill layout-align='center center')
-    h1.md-title
-      | {{ vm.film.name }}
+    .film-title
+      h1
+        | {{ vm.film.name }}
+      h5
+        | {{ vm.film.secondName }}
 
     table
       tbody
