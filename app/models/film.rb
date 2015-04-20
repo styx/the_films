@@ -23,5 +23,5 @@ class Film < ActiveRecord::Base
   validates :name, :gapoif, :url, presence: true
   validates :url, uniqueness: true
 
-  default_scope { order(:id) }
+  update_index 'films#film', :self
 end

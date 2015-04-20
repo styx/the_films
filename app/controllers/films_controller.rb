@@ -2,7 +2,12 @@ class FilmsController < ApplicationController
   before_action :set_film, only: [:show, :edit, :update, :destroy]
 
   def index
-    @films = Film.page(params[:page])
+    @films = FilmsGenericSearch.new(params[:q]).search
+      .limit(8).page(params[:page])
+      .only(:id).load
+  rescue Elasticsearch::Transport::Transport::Errors::BadRequest => e
+    @films = []
+    logger.error e
   end
 
   def show
