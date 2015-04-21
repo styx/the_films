@@ -66,29 +66,39 @@ namespace :import do
 
     path = Rails.root.join('tmp/file.csv')
     if File.exists?(path)
-      CSV.foreach(path) do |row|
-        film = FilmRow.new
-        film.name = row[0]
-        film.second_name = row[1]
-        film.gapoif = row[2]
-        film.time = row[3]
-        film.kind = row[4]
-        film.url = row[5]
-        film.year = row[6]
+      i = 0
+      Chewy.strategy(:atomic) do
+        ActiveRecord::Base.transaction do
 
-        film.genres = (row.last || '').strip.split(',')
+          CSV.foreach(path) do |row|
+            i += 1
+            film = FilmRow.new
+            film.name = row[0]
+            film.second_name = row[1]
+            film.gapoif = row[2]
+            film.time = row[3]
+            film.kind = row[4]
+            film.url = row[5]
+            film.year = row[6]
 
-        case film.save
-        when :added
-          added += 1
-        when :skipped
-          skipped += 1
-        when :invalid
-          invalid += 1
+            film.genres = (row.last || '').strip.split(',')
+
+            case film.save
+            when :added
+              added += 1
+            when :skipped
+              skipped += 1
+            when :invalid
+              invalid += 1
+            end
+
+            print ("\r\e[0;32;49mNew: #{added}\e[0m    \e[0;33;49mOld: #{skipped}\e[0m    \e[0;31;49mInvalid: #{invalid}\e[0m") if i % 117 == 0
+          end
+
         end
       end
 
-      puts ("\e[0;32;49mNew: #{added}\e[0m\t\e[0;33;49mOld: #{skipped}\e[0m\t\e[0;31;49mInvalid: #{invalid}\e[0m")
+      puts ("\r\e[0;32;49mNew: #{added}\e[0m    \e[0;33;49mOld: #{skipped}\e[0m    \e[0;31;49mInvalid: #{invalid}\e[0m")
     else
       puts "Place CSV to the tmp/file.csv"
     end
