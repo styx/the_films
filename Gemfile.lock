@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/deivid-rodriguez/pry-byebug.git
+  revision: 63a0a4a6cdfb613a527d689fe7c6ff4f0024bdc7
+  specs:
+    pry-byebug (3.1.0)
+      byebug (~> 4.0)
+      pry (~> 0.10)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -121,9 +129,6 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-byebug (3.1.0)
-      byebug (~> 4.0)
-      pry (~> 0.10)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.1)
@@ -145,14 +150,14 @@ GEM
       rails-assets-angular (= 1.3.15)
     rails-assets-angular-aria (1.3.15)
       rails-assets-angular (= 1.3.15)
-    rails-assets-angular-breadcrumb (0.3.3)
+    rails-assets-angular-breadcrumb (0.4.0)
       rails-assets-angular (>= 1.0.8)
       rails-assets-angular-ui-router (>= 0.2.0)
     rails-assets-angular-material (0.8.3)
       rails-assets-angular (~> 1.3.0)
       rails-assets-angular-animate (~> 1.3.0)
       rails-assets-angular-aria (~> 1.3.0)
-    rails-assets-angular-ui-router (0.2.13)
+    rails-assets-angular-ui-router (0.2.15)
       rails-assets-angular (>= 1.0.8)
     rails-assets-hammerjs (2.0.4)
     rails-deprecated_sanitizer (1.0.3)
@@ -247,7 +252,7 @@ DEPENDENCIES
   jquery-rails
   ng-rails-csrf
   pg
-  pry-byebug
+  pry-byebug!
   quiet_assets
   rails (= 4.2.1)
   rails-assets-angular-breadcrumb!
