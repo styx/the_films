@@ -40,7 +40,7 @@ group :development, :test do
   gem 'table_print'
   gem 'quiet_assets'
 
-  gem 'pry-byebug', github: 'deivid-rodriguez/pry-byebug'
+  gem 'pry-byebug'
   gem 'better_errors'
   gem 'binding_of_caller'
 
