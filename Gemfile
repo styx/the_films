@@ -5,7 +5,7 @@ gem 'pg'
 gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails'
-gem 'sprockets', '~> 2.12.3'
+gem 'sprockets', '~> 2.12.5'
 
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
